@@ -10,9 +10,9 @@ import java.util.LinkedHashMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import nova.game.Tecolote;
 import nova.library.logs.Logs;
 import nova.library.xml.XMLElementList;
-import nova.tecolote.Game;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -79,7 +79,7 @@ public class Settings
 	public static final int KEY_BINDING_PAN_RIGHT = 323;
 	
 	////////////////////////////////
-	private Game game;
+	private Tecolote tecolote;
 	private String filename;
 	private LinkedHashMap<Integer,Boolean> settings_default_boolean;
 	private LinkedHashMap<Integer,Boolean> settings_boolean;
@@ -95,12 +95,12 @@ public class Settings
 		
 	private KeyBindings keyBindings; 
 	
-	public Settings(Game game,String filename)
+	public Settings(Tecolote tecolote,String filename)
 	{
 		//...Currently Working on Loading Setting From XML instead of hardcoding it
 		//Should default setting values be separated from actual values?
 		//For now keep in same file as their are no users yet
-		this.game = game;
+		this.tecolote = tecolote;
 		this.filename = filename;
 		reload(filename);
 	}
@@ -415,7 +415,7 @@ public class Settings
 	}
 	public void printSettingsToLog()
 	{
-		Logs logs = game.getLogs();
+		Logs logs = tecolote.getLogs();
 		for(int id: settings_int.keySet())
 			logs.addToLog(Logs.LOG_SYSTEM_INFO,id+": "+getInt(id));
 		for(int id: settings_boolean.keySet())

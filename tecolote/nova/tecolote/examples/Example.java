@@ -1,11 +1,11 @@
 package nova.tecolote.examples;
 
-import nova.tecolote.Game;
+import nova.game.Tecolote;
 import nova.library.settings.*;
 import nova.library.logs.*;
 
 public class Example
-	implements Game
+	implements Tecolote
 {
 	private Settings settings;
 	private Logs logs;

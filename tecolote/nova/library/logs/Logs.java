@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
-import nova.tecolote.Game;
+import nova.game.Tecolote;
 import nova.library.utilities.Parser;
 import nova.library.settings.*;
 
@@ -18,13 +18,13 @@ public class Logs
 	public static int LOG_SYSTEM_DEBUG = 4;
 	public static int LOG_SYSTEM_ERROR = 5;
 	
-	private Game game;
+	private Tecolote tecolote;
 	
 	private LinkedHashMap<Integer,LinkedList<String>> logs;
 	private LinkedHashMap<Integer,Integer> files;
-	public Logs(Game game)
+	public Logs(Tecolote tecolote)
 	{
-		this.game = game;
+		this.tecolote = tecolote;
 		logs = new LinkedHashMap<>();
 		logs.put(LOG_GAME_QUESTS,new LinkedList<String>());
 		logs.put(LOG_GAME_DIALOG,new LinkedList<String>());
@@ -61,16 +61,16 @@ public class Logs
 		
 		clearAllLogs();
 		
-		if((new File(game.getSettings().getString(Settings.FILE_LOG_GAME_QUESTS))).exists())
-			logs.get(LOG_GAME_QUESTS).addAll(Parser.fileToList(game.getSettings().getString(Settings.FILE_LOG_GAME_QUESTS),"//"));
-		if((new File(game.getSettings().getString(Settings.FILE_LOG_GAME_DIALOG))).exists())
-			logs.get(LOG_GAME_DIALOG).addAll(Parser.fileToList(game.getSettings().getString(Settings.FILE_LOG_GAME_DIALOG),"//"));
-		if((new File(game.getSettings().getString(Settings.FILE_LOG_SYSTEM_INFO))).exists())
-			logs.get(LOG_SYSTEM_INFO).addAll(Parser.fileToList(game.getSettings().getString(Settings.FILE_LOG_SYSTEM_INFO),"//"));
-		if((new File(game.getSettings().getString(Settings.FILE_LOG_SYSTEM_DEBUG))).exists())
-			logs.get(LOG_SYSTEM_DEBUG).addAll(Parser.fileToList(game.getSettings().getString(Settings.FILE_LOG_SYSTEM_DEBUG),"//"));
-		if((new File(game.getSettings().getString(Settings.FILE_LOG_SYSTEM_ERROR))).exists())
-			logs.get(LOG_SYSTEM_ERROR).addAll(Parser.fileToList(game.getSettings().getString(Settings.FILE_LOG_SYSTEM_ERROR),"//"));	
+		if((new File(tecolote.getSettings().getString(Settings.FILE_LOG_GAME_QUESTS))).exists())
+			logs.get(LOG_GAME_QUESTS).addAll(Parser.fileToList(tecolote.getSettings().getString(Settings.FILE_LOG_GAME_QUESTS),"//"));
+		if((new File(tecolote.getSettings().getString(Settings.FILE_LOG_GAME_DIALOG))).exists())
+			logs.get(LOG_GAME_DIALOG).addAll(Parser.fileToList(tecolote.getSettings().getString(Settings.FILE_LOG_GAME_DIALOG),"//"));
+		if((new File(tecolote.getSettings().getString(Settings.FILE_LOG_SYSTEM_INFO))).exists())
+			logs.get(LOG_SYSTEM_INFO).addAll(Parser.fileToList(tecolote.getSettings().getString(Settings.FILE_LOG_SYSTEM_INFO),"//"));
+		if((new File(tecolote.getSettings().getString(Settings.FILE_LOG_SYSTEM_DEBUG))).exists())
+			logs.get(LOG_SYSTEM_DEBUG).addAll(Parser.fileToList(tecolote.getSettings().getString(Settings.FILE_LOG_SYSTEM_DEBUG),"//"));
+		if((new File(tecolote.getSettings().getString(Settings.FILE_LOG_SYSTEM_ERROR))).exists())
+			logs.get(LOG_SYSTEM_ERROR).addAll(Parser.fileToList(tecolote.getSettings().getString(Settings.FILE_LOG_SYSTEM_ERROR),"//"));	
 	}
 	public void addToLogs(int logs[],String line)
 	{
@@ -93,7 +93,7 @@ public class Logs
 	}
 	private void saveLog(int log)
 	{
-		String filename = game.getSettings().getString(files.get(log));
+		String filename = tecolote.getSettings().getString(files.get(log));
 		File f = new File(filename);
 		File parent = f.getParentFile();
 		if(!parent.exists())

@@ -1,9 +1,9 @@
-package nova.tecolote;
+package nova.game;
 
 import nova.library.settings.*;
 import nova.library.logs.*;
 
-public interface Game
+public interface Tecolote
 {
 	public Logs getLogs();
 	public Settings getSettings();
