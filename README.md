@@ -19,9 +19,7 @@ This library provides a few general purpose utilties that can be used in a varie
 
 ### To build:
 
-Dependencies:
+External Dependencies:
 
-- [tecolote](https://github.com/pjdufour/tecolote)
-- JOGL
-- Jython
+- none
 
