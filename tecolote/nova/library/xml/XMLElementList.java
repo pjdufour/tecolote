@@ -1,6 +1,5 @@
 package nova.library.xml;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
