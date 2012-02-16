@@ -10,7 +10,7 @@ This library provides a few general purpose utilties that can be used in a varie
  - Settings (and KeyBindings)
  - Logs
  - XML Utility Classes
- - Parser (string to list, string to array, string to hash map, file to list, file to array, file to hash map, parse dimension)
+ - Parser for strings and files (string to list, string to array, string to hash map, file to list, file to array, file to hash map, parse dimension)
 
 ### Example
 
